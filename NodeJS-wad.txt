@@ -18,7 +18,7 @@ npm install express --save
 
 
 in wad folder make--> index.js file and write code
-and make folder name --> public in node_modules
+and make folder name --> public in wad folder
 in public folder make--> index.html 
 
 //and write code in index.html
