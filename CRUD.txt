@@ -1,0 +1,102 @@
+//crud:-
+
+open wad-crud folder through vs
+vs code terminal:-
+
+npm init
+
+//open mongodb:-
+open its cmd
+
+show dbs
+use student
+db.createCollection('Profile')
+db.profile.insertOne({name:"Arohi", email:"arohi2@gmail.com"
+, city:"pune"})
+
+open mongodb UI
+
+click on find
+
+database will be shown
+
+//go on terminal vs code:-
+create a file in wad-crud folder mongodb.js
+
+terminal:-
+npm i mongodb
+npm i express
+
+write code in index.js all and follow steps
+
+npm start
+node index.js
+
+ copy this url and copy in it postman 
+
+select GET,POST,PUT,DELETE
+body->raw->JSON
+ go to terminal write 
+
+node index.js
+
+run on:- http://localhost:3000/
+
+//mongodb.js:-
+
+const {MongoClient}=require('mongodb');
+const url="mongodb://localhost:27017"
+const database='student';
+const client=new MongoClient(url);
+
+const dbConnect=async()=>{
+    const result=await client.connect();
+    const db=await result.db(database);
+    return db.collection('Profile');
+
+}
+
+module.exports=dbConnect;
+
+
+//index.js:-
+
+const dbConnect=require('./mongodb')
+const express=require('express')
+const app=express();
+app.use(express.json())
+
+//get API
+
+
+app.get('/getData',async(req,res)=>{
+let result=await dbConnect();
+result=await result.find().toArray();
+res.send(result);
+})
+
+//post API
+
+app.post('/insertData',async(req,res)=>{
+    let result=await dbConnect();
+    result=await result.insertOne(req.body);
+    res.send("Data Inserted Successfully")
+})
+
+
+//Put API
+app.put('/updateData/:name',async(req,res)=>{
+    let result=await dbConnect();
+    result=await result.updateOne({name:req.params.name},{$set:req.body});
+    res.send("Data Updated Successfully")
+})
+
+
+//Delete API
+app.delete('/deleteData/:name',async(req,res)=>{
+    let result=await dbConnect();
+    result=await result.deleteOne({name:req.params.name})
+    res.send("Data Deleted Successfully")
+})
+
+app.listen(3000);

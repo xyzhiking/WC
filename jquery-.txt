@@ -1,0 +1,74 @@
+//jquery:-
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Café</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- jQuery Mobile CDN -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+<!-- Home Page -->
+<div data-role="page" id="home">
+  <div data-role="header">
+    <h1>Simple Café</h1>
+  </div>
+
+  <div data-role="content">
+    <h2>Welcome!</h2>
+    <p>Enjoy our best coffee and snacks.</p>
+    <a href="#menu" class="ui-btn">View Menu</a>
+    <a href="#contact" class="ui-btn">Contact Us</a>
+  </div>
+
+  <div data-role="footer">
+    <h4>&copy; 2025 Simple Café</h4>
+  </div>
+</div>
+
+<!-- Menu Page -->
+<div data-role="page" id="menu">
+  <div data-role="header">
+    <h1>Menu</h1>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview">
+      <li>Coffee - $3</li>
+      <li>Tea - $2</li>
+      <li>Sandwich - $4</li>
+      <li>Cake - $3.5</li>
+    </ul>
+    <a href="#home" class="ui-btn">Back to Home</a>
+  </div>
+
+  <div data-role="footer">
+    <h4>Simple Café</h4>
+  </div>
+</div>
+
+<!-- Contact Page -->
+<div data-role="page" id="contact">
+  <div data-role="header">
+    <h1>Contact Us</h1>
+  </div>
+
+  <div data-role="content">
+    <p><strong>Phone:</strong> 123-456-7890</p>
+    <p><strong>Email:</strong> cafe@example.com</p>
+    <p><strong>Address:</strong> 123 Main Street, Coffee City</p>
+    <a href="#home" class="ui-btn">Back to Home</a>
+  </div>
+
+  <div data-role="footer">
+    <h4>Simple Café</h4>
+  </div>
+</div>
+
+</body>
+</html>
