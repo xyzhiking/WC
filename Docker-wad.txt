@@ -7,7 +7,7 @@ sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker $USER
 sudo docker-v or v
-sudo images
+sudo docker images
 sudo docker ps
 sudo docker pull openjdk
 sudo docker run --name JAVA -it -d openjdk
