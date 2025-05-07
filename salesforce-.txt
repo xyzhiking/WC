@@ -1,0 +1,7 @@
+//salesforce:-
+
+NOT(REGEX(Phone__c, "^[0-9]{10}$"))
+
+Enrollment_Date__c > TODAY()
+
+DOB__c > TODAY()

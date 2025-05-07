@@ -1,0 +1,99 @@
+//AJAX - user Registration
+
+
+//register.html:-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Registration</title>
+</head>
+<body>
+  <h2>User Registration</h2>
+  <form id="registerForm">
+    <label>Name: <input type="text" name="name" required></label><br><br>
+    <label>Email: <input type="email" name="email" required></label><br><br>
+    <label>Password: <input type="password" name="password" required></label><br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const user = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        password: formData.get("password")
+      };
+
+      // Simulating AJAX POST using setTimeout and localStorage
+      setTimeout(() => {
+        let users = JSON.parse(localStorage.getItem("users") || "[]");
+        users.push(user);
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("User registered successfully!");
+        window.location.href = "list.html"; // Go to data list page
+      }, 500);
+    });
+  </script>
+</body>
+</html>
+
+
+//list.html:-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registered Users</title>
+</head>
+<body>
+  <h2>List of Registered Users</h2>
+  <table border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>Name</th><th>Email</th><th>Password</th>
+      </tr>
+    </thead>
+    <tbody id="userTable"></tbody>
+  </table>
+<script>
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const table = document.getElementById("userTable");
+
+    users.forEach(user => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${user.name}</td><td>${user.email}</td><td>${user.password}</td>`;
+      table.appendChild(row);
+    });
+  </script>
+</body>
+</html>
+
+
+//deploy on ubuntu terminal:-
+
+
+sudo apt update
+sudo apt install nodejs npm
+sudo npm install -g http-server
+
+mkdir user_registration && cd user_registation
+
+nano register.html (paste your code here)
+
+ctrl o
+enter
+ctrl x
+
+nano list.html (paste list code here)
+
+ctrl o
+enter
+ctrl x
+
+http-server -p 8080

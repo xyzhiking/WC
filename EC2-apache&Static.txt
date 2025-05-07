@@ -1,0 +1,41 @@
+//EC2 apache and static instance:-
+
+
+create instance:-
+ec2
+instance
+launch instance
+give name to server eg:- arohi
+select amazon/Linux
+instance type- t2.micro(free tier)
+create key pair (aro)
+should be in RSA and .pem
+
+allow-ssh(22) and http(80)
+
+//apache:-
+
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+sudo systemctl status httpd
+
+apache created!!
+
+select public Ipv4 and paste it on any server
+
+//static:-
+
+sudo dnf update -y
+sudo dnf install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+sudo systemctl status httpd
+
+sudo nano /var/www/html/index.html
+
+NOW CLICK ON CONNECT -> HTML CODE -> CTRL O -> ENTER -> CTRL X -> REFERESH  pasted IP
+
+
+select public Ipv4 and paste it on any server

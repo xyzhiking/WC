@@ -1,0 +1,78 @@
+1. create a folder and open it in vs code and open terminal also
+2. In terminal
+  npm --version
+  npm install -g @angular/cli@latest
+  ng new partC
+3. to run  
+   cd partC
+    ng serve
+
+################app.component.html#############################
+<h1>{{title}}</h1> 
+<input type=" text" #name placeholder="Enter your name: " name="name"><br> 
+<input type=" text" #address placeholder="Enter your Address: "  name="address"><br> 
+<input type=" text" #email placeholder="Enter your Email: " name="email"><br> 
+<input type=" text" #contact placeholder="Enter your Contact Number: " name="contact"><br> 
+<button (click)="getValue(name.value, address.value, email.value, contact.value)">Register</button> 
+<h1>Your Resgistered Data</h1><br> 
+<p>name: {{displayname}}</p><br> 
+<p>address: {{displayaddress}}</p><br> 
+<p>email: {{displayemail}}</p><br> 
+<p>contact: {{displaycontact}}</p><br>
+
+######################app.component.ts################################
+import { Component } from '@angular/core'; 
+import { RouterOutlet } from '@angular/router'; 
+import { getRandomValues } from 'node:crypto'; 
+@Component({ 
+selector: 'app-root', 
+imports: [RouterOutlet], 
+templateUrl: './app.component.html', 
+styleUrl: './app.component.css' 
+}) 
+export class AppComponent {             ########already written#############
+title = 'Registration Form'; 
+displayname = ''; 
+displayaddress = ''; 
+displayemail = ''; 
+displaycontact = ''; 
+getValue(name: string, address: string, email: string, contact: string) { 
+this.displayname = name; 
+this.displayaddress = address; 
+this.displayemail = email; 
+this.displaycontact = contact; 
+} 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DEPLOy on Google cloud environment:-
+ vs code terminal:-
+npm install -g firebase-tools
+firebase login
+firebase init
+
+Choose Hosting(by click on spacebar and then enter)
+
+Select your Firebase project (create one in Firebase Console if needed)
+
+make id:- aro123 unique wali
+
+Configure as SPA: Yes
+type:
+
+firebase deploy

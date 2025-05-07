@@ -1,0 +1,44 @@
+//node.js Prac:-
+create one folder wad6 and open it in vs code
+
+vs code terminal :-
+
+ npm init
+(press enter)
+
+//author:-arohi
+
+(press enter)
+
+yes (press enter)
+
+npm install express --save
+
+(press enter)
+
+
+in wad folder make--> index.js file and write code
+and make folder name --> public in node_modules
+in public folder make--> index.html 
+
+//and write code in index.html
+
+//and write code in index.js:-
+
+
+const express=require('express');//express modeule imported
+const app=express();//module called
+
+app.use(express.static('public'))
+app.listen(4000,()=>{  //provided port number and call back is used
+    console.log("Server is started");
+})
+
+
+vs code terminal:-
+
+node index.js
+
+
+go to any server type: localhost:4000
+

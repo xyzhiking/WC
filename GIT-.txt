@@ -1,0 +1,35 @@
+//github:-
+
+
+mkdir Part-A
+
+cd Part-A
+
+git --version
+
+create file in Part-A(file1.txt)
+enter data: name,class,sub etc.
+
+create new repo on git hub
+
+git init
+
+git add.
+
+git status
+
+copy repo link and paste down:-
+
+git remote add origin ""
+
+git commit -m "first commit"
+
+git config --global user.name "Arohi Kanawade"
+
+git config --global user.email "arohikanwade2@gmail.com"
+
+git status
+
+git push -u origin master or main
+
+

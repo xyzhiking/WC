@@ -1,0 +1,37 @@
+//file transfer:-
+
+1. open oracle virtualbox manager
+new -> VM1 ->  Linnux -> Ubuntu(64 bit) ->use existing virtual hard disk file -> give path of ubuntu vm dk file -> create
+new -> VM2 ->  Linnux -> Ubuntu(64 bit) ->use existing virtual hard disk file -> give path of ubuntu vm dk file -> create
+
+2. file -> prefrences -> network -> NatNetwork
+3. VM1 -> setting -> Network -> NatNetwork
+   VM2 -> setting -> Network -> NatNetwork
+
+4. open both machines
+
+VM1:-
+
+vagrant
+vagrant
+
+ifconfig (note inet)
+ls
+touch arohi.txt
+cat arohi.txt
+nano arohi.txt (enter data in file)
+
+ctrl s
+ctrl x
+
+cat arohi.txt
+scp arohi.txt vagrant@(Ip of vm 2 -10.0.2.16):/home/vagrant
+yes
+password:-
+
+
+
+VM2
+ls
+ls
+cat arohi.txt
