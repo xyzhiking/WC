@@ -1,0 +1,196 @@
+On terminal:
+node -v
+npm -v
+mongosh
+1.	Create a folder:
+2.	mkdir curd-api
+3.	cd curd-api
+4.	Initialize the project:
+5.	npm init -y
+6.	Install required packages:
+7.	npm install express mongoose dotenv
+8.	npm install --save-dev nodemon
+9.	Modify package.json:
+10.	"scripts": {
+11.	  "start": "nodemon index.js"
+12.	}
+13.	📁 curd-api
+├── index.js
+├── .env
+├── models
+│ └── Item.js
+├── routes
+│ └── items.js
+├── package.json
+14.	✅ Step 4: Create .env File
+15.	Create a file named .env:
+16.	PORT=5000
+17.	MONGO_URI=mongodb://127.0.0.1:27017/curd_api_db
+18.	✅ Step 5: index.js (Main Server File)
+19.	const express = require('express');
+20.	const mongoose = require('mongoose');
+21.	const dotenv = require('dotenv');
+22.	
+23.	dotenv.config();
+24.	const app = express();
+25.	app.use(express.json());
+26.	
+27.	const itemRoutes = require('./routes/items');
+28.	app.use('/api/items', itemRoutes);
+29.	
+30.	mongoose.connect(process.env.MONGO_URI, {
+31.	  useNewUrlParser: true,
+32.	  useUnifiedTopology: true
+33.	})
+34.	.then(() => console.log('MongoDB connected'))
+35.	.catch(err => console.log(err));
+36.	
+37.	const PORT = process.env.PORT || 5000;
+38.	app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+39.	✅ Step 6: models/Item.js
+40.	const mongoose = require('mongoose');
+41.	
+42.	const ItemSchema = new mongoose.Schema({
+43.	  name: {
+44.	    type: String,
+45.	    required: true
+46.	  },
+47.	  quantity: {
+48.	    type: Number,
+49.	    default: 0
+50.	  }
+51.	});
+52.	
+53.	module.exports = mongoose.model('Item', ItemSchema);
+54.	✅ Step 7: routes/items.js
+55.	const express = require('express');
+56.	const router = express.Router();
+57.	const Item = require('../models/Item');
+58.	
+59.	// CREATE
+60.	router.post('/', async (req, res) => {
+61.	  try {
+62.	    const newItem = new Item(req.body);
+63.	    const saved = await newItem.save();
+64.	    res.status(201).json(saved);
+65.	  } catch (err) {
+66.	    res.status(400).json({ error: err.message });
+67.	  }
+68.	});
+69.	
+70.	// READ ALL
+71.	router.get('/', async (req, res) => {
+72.	  try {
+73.	    const items = await Item.find();
+74.	    res.json(items);
+75.	  } catch (err) {
+76.	    res.status(500).json({ error: err.message });
+77.	  }
+78.	});
+79.	
+80.	// UPDATE
+81.	router.put('/:id', async (req, res) => {
+82.	  try {
+83.	    const updatedItem = await Item.findByIdAndUpdate(
+84.	      req.params.id,
+85.	      req.body,
+86.	      { new: true }
+87.	    );
+88.	    res.json(updatedItem);
+89.	  } catch (err) {
+90.	    res.status(400).json({ error: err.message });
+91.	  }
+92.	});
+93.	
+94.	// DELETE
+95.	router.delete('/:id', async (req, res) => {
+96.	  try {
+97.	    const deletedItem = await Item.findByIdAndDelete(req.params.id);
+98.	    res.json({ message: 'Deleted', item: deletedItem });
+99.	  } catch (err) {
+100.	    res.status(500).json({ error: err.message });
+101.	  }
+102.	});
+103.	
+104.	module.exports = router;
+105.	✅ Step 8: Run the API
+106.	npm start
+107.	You should see:
+108.	MongoDB connected
+109.	Server started on port 5000
+
+Operation	Method	URL
+Create	POST	http://localhost:5000/api/items
+Read	GET	http://localhost:5000/api/items
+Update	PUT	http://localhost:5000/api/items/<id>
+Delete	DELETE	http://localhost:5000/api/items/<id>
+________________________________________
+🟢 Create Item (POST)
+•	URL: http://localhost:5000/api/items
+•	Method: POST
+•	Body → raw → JSON:
+json
+CopyEdit
+{
+  "name": "Apples",
+  "quantity": 5
+}
+•	Click Send
+AJAX:
+Register.html
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body>
+  <h2>User Registration</h2>
+  <form id="form">
+    <input name="name" placeholder="Name" required><br><br>
+    <input name="email" type="email" placeholder="Email" required><br><br>
+    <input name="password" type="password" placeholder="Password" required><br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const user = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        password: formData.get("password")
+      };
+
+      // Simulating AJAX POST with setTimeout
+      setTimeout(() => {
+        let users = JSON.parse(localStorage.getItem("users") || "[]");
+        users.push(user);
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("User registered!");
+        window.location.href = "list.html";
+      }, 300);
+    });
+  </script>
+</body>
+</html>
+//list.html///////////////////////
+<!DOCTYPE html>
+<html>
+<head><title>Registered Users</title></head>
+<body>
+  <h2>Registered Users</h2>
+  <table border="1" cellpadding="10">
+    <tr><th>Name</th><th>Email</th><th>Password</th></tr>
+    <tbody id="list"></tbody>
+  </table>
+
+  <script>
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    users.forEach(u => {
+      document.getElementById("list").innerHTML += `<tr><td>${u.name}</td><td>${u.email}</td><td>${u.password}</td></tr>`;
+    });
+  </script>
+</body>
+</html>
+
+http://localhost:8080/register.html
