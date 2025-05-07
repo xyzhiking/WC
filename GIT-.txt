@@ -32,4 +32,15 @@ git status
 
 git push -u origin master or main
 
+to create again new file in Part-A
+file2.txt
+
+git add.
+
+git status
+
+git commit -m "Second commit"
+
+git push -u origin master or main
+
 
