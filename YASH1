@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Beautiful College</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>My College</h2>
+    <ul>
+      <li><a href="#">🏠 Home</a></li>
+      <li><a href="#">📚 About</a></li>
+      <li><a href="#">💼 Departments</a></li>
+      <li><a href="#">📝 Admissions</a></li>
+      <li><a href="#">📞 Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Welcome to My College</h1>
+      <p>Empowering the next generation through quality education.</p>
+    </header>
+
+    <section>
+      <h2>About Us</h2>
+      <p>Our institution provides a vibrant learning environment with state-of-the-art infrastructure and experienced faculty, shaping future leaders.</p>
+    </section>
+
+    <section>
+      <h2>Departments</h2>
+      <ul>
+        <li>Computer Science & Engineering</li>
+        <li>Electronics & Communication</li>
+        <li>Mechanical Engineering</li>
+        <li>Civil Engineering</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
+
+<!--style.css-->
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  background-color: #f0f4f8;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  padding: 30px 20px;
+  position: fixed;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+  transform: translateX(5px);
+  color: #ffd700;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  padding: 40px;
+  width: calc(100% - 250px);
+}
+
+header {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 28px;
+  color: #2a5298;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 16px;
+  color: #555;
+}
+
+section {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  color: #1e3c72;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+section p, section ul {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+}
+
+section ul {
+  padding-left: 20px;
+}
+
+section ul li {
+  margin-bottom: 8px;
+}
