@@ -8,18 +8,19 @@
     ng serve
 
 ################app.component.html#############################
-<h1>{{title}}</h1> 
-<input type=" text" #name placeholder="Enter your name: " name="name"><br> 
-<input type=" text" #address placeholder="Enter your Address: "  name="address"><br> 
-<input type=" text" #email placeholder="Enter your Email: " name="email"><br> 
-<input type=" text" #contact placeholder="Enter your Contact Number: " name="contact"><br> 
-<button (click)="getValue(name.value, address.value, email.value, contact.value)">Register</button> 
-<h1>Your Resgistered Data</h1><br> 
-<p>name: {{displayname}}</p><br> 
-<p>address: {{displayaddress}}</p><br> 
-<p>email: {{displayemail}}</p><br> 
-<p>contact: {{displaycontact}}</p><br>
+<h1>{{title}}</h1>
 
+<input type="text" #name placeholder="Enter your name: " name="name"><br>
+<input type="text" #email placeholder="Enter your email: " name="email"><br>
+<input type="text" #address placeholder="Enter your address: " name="address"><br>
+<input type="text" #contact placeholder="Enter your contact: " name="contact"><br> 
+
+<button (click)="getValue(name.value, email.value, address.value, contact.value)">Registration</button>
+<h1> Your Registered Data </h1><br>
+<p>name: {{displayname}}</p><br>
+<p>email: {{displayemail}}</p><br>
+<p>address: {{displayaddress}}</p><br>
+<p>contact: {{displaycontact}}</p><br>
 ######################app.component.ts################################
 import { Component } from '@angular/core'; 
 import { RouterOutlet } from '@angular/router'; 
@@ -31,18 +32,21 @@ templateUrl: './app.component.html',
 styleUrl: './app.component.css' 
 }) 
 export class AppComponent {             ########already written#############
-title = 'Registration Form'; 
-displayname = ''; 
-displayaddress = ''; 
-displayemail = ''; 
-displaycontact = ''; 
-getValue(name: string, address: string, email: string, contact: string) { 
-this.displayname = name; 
-this.displayaddress = address; 
-this.displayemail = email; 
-this.displaycontact = contact; 
-} 
+title = 'Registration form';
+  displayname='';
+  displayemail='';
+  displayaddress='';
+  displaycontact='';
+  getValue(name: string, email: string, address: string, contact: string)
+  {
+  this.displayname=name;
+  this.displayemail=email;
+  this.displayaddress=address;
+  this.displaycontact=contact;
 }
+
+}
+
 
 
 
