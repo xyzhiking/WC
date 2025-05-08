@@ -69,7 +69,7 @@ app.use(express.json())
 //get API
 
 
-app.get('/getData',async(req,res)=>{
+app.get('/',async(req,res)=>{
 let result=await dbConnect();
 result=await result.find().toArray();
 res.send(result);
@@ -77,7 +77,7 @@ res.send(result);
 
 //post API
 
-app.post('/insertData',async(req,res)=>{
+app.post('/',async(req,res)=>{
     let result=await dbConnect();
     result=await result.insertOne(req.body);
     res.send("Data Inserted Successfully")
@@ -85,7 +85,7 @@ app.post('/insertData',async(req,res)=>{
 
 
 //Put API
-app.put('/updateData/:name',async(req,res)=>{
+app.put('/:name',async(req,res)=>{
     let result=await dbConnect();
     result=await result.updateOne({name:req.params.name},{$set:req.body});
     res.send("Data Updated Successfully")
@@ -93,7 +93,7 @@ app.put('/updateData/:name',async(req,res)=>{
 
 
 //Delete API
-app.delete('/deleteData/:name',async(req,res)=>{
+app.delete('/:name',async(req,res)=>{
     let result=await dbConnect();
     result=await result.deleteOne({name:req.params.name})
     res.send("Data Deleted Successfully")
