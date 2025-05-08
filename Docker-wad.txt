@@ -44,7 +44,7 @@ sudo docker start (type container_id given )
 sudo docker stop (type container_id given )
 sudo docker rm (type container_id  given ) python
 sudo docker rmi (image name given) 
-/exit
+()exit
 
 
 
