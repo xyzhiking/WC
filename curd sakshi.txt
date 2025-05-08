@@ -1,0 +1,123 @@
+mkdir user-crud-api
+cd user-crud-api
+npm init -y
+command 
+npm install express mongoose body-parser cors
+mkdir models routes
+touch server.js models/userModel.js routes/userRoutes.js
+mkdir models routes
+echo. > server.js
+echo. > models\userModel.js
+echo. > routes\userRoutes.js
+
+step 3. server.js
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
+const app = express();
+const PORT = 5000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// MongoDB Connection
+mongoose.connect('mongodb://localhost:27017/userDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ Connected to MongoDB"))
+.catch(err => console.log("❌ DB Connection Error: ", err));
+
+// Routes
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);
+
+// Start Server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});
+step4. models/user.js
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  age: Number
+});
+
+module.exports = mongoose.model('User', userSchema);
+   
+step 5. routes/userRoutes
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
+
+// ➕ Create User
+router.post('/', async (req, res) => {
+  try {
+    const newUser = new User(req.body);
+    await newUser.save();
+    res.status(201).json(newUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// 📃 Read All Users
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// ✏️ Update User by ID
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id, req.body, { new: true }
+    );
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// ❌ Delete User by ID
+router.delete('/:id', async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ message: "User deleted" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = router;
+
+
+step 6 .command
+node server.js
+step 7.postman
+Operation	Method	URL
+Create	POST	http://localhost:5000/api/items
+Read	GET	http://localhost:5000/api/items
+Update	PUT	http://localhost:5000/api/items/<id>
+Delete	DELETE	http://localhost:5000/api/items/<id>
+________________________________________
+🟢 Create Item (POST)
+•	URL: http://localhost:5000/api/items
+•	Method: POST
+•	Body → raw → JSON:
+json
+CopyEdit
+{
+  "name": "Apples",
+  "quantity": 5
+}
+•	Click Send
