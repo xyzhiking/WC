@@ -29,19 +29,25 @@ npm i express
 
 write code in index.js all and follow steps
 
-npm start
+//npm start if required
 node index.js
 
  copy this url and copy in it postman 
 
 select GET,POST,PUT,DELETE
-body->raw->JSON
+ for all GPPD=> body->raw->JSON
+for GET:- only select body or params
+for POST:- select Body-> raw->json and add data in it
+for PUT:- go in post file update any city and click on send it will update and on url paste:-/name of person
  go to terminal write 
+for DELETE:- only selects params
 
 node index.js
 
 run on:- http://localhost:3000/
 
+
+for POST:- select Body-> raw->json and add data in it
 //mongodb.js:-
 
 const {MongoClient}=require('mongodb');
