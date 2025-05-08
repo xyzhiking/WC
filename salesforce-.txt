@@ -11,4 +11,4 @@ AND(
   Appointment_Date__c < NOW()
 )
 
-SBLANK(Reason__c
+ISBLANK(Reason__c)
