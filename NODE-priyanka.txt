@@ -1,0 +1,71 @@
+Node js
+On Terminal:
+ Type: node  –v
+             npm –v
+Create a Node.js Project:
+Folder : StaticWebsite
+On terminal :
+cd path to static website
+npm init –y
+npm install express
+//app.js
+const express = require('express');
+const path = require('path');
+const app = express();
+
+// Set the static folder to serve static files like HTML, CSS, JS, and images
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Set the port to listen on
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+//public -> index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Static Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Hello from Node.js Static Website!</h1>
+</body>
+</html>
+
+On terminal :
+cd path to static website
+node app.js
+run : http://localhost:3000
+
+create ec2 instance:
+in network security :
+edit
+SSH -> My IP
+HTTP -> Anywhere
+Custom TCP -> Port 3000 , Anywhere
+Launch instance
+Copy public IPv4
+In MOBA XTERM:
+sudo apt update -y
+sudo apt install nodejs -y
+sudo apt install npm –y
+node -v
+npm –v
+drag and drop folder
+cd StaticWebsite
+npm install
+node app.js
+http://your-ec2-public-ip:3000
+
+STATIC WEBSITE:
+Sudo apt update
+Sudo apt install apache2 –y
+Sudo systemctl start apache2
+Sudo systemctl enable apache2
+Drag file
+Sudo mv index.html  /var/www/html/
+Sudo chmod 644 /var/www/html/index.html
+Sudo rm /var/www/html/index.html.old
+Copy public ip and run on url
