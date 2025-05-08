@@ -11,7 +11,7 @@ open its cmd
 show dbs
 use student
 db.createCollection('Profile')
-db.profile.insertOne({name:"Arohi", email:"arohi2@gmail.com"
+db.Profile.insertOne({name:"Arohi", email:"arohi2@gmail.com"
 , city:"pune"})
 
 open mongodb UI
