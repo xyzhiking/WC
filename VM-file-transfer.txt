@@ -5,8 +5,8 @@ new -> VM1 ->  Linnux -> Ubuntu(64 bit) ->use existing virtual hard disk file ->
 new -> VM2 ->  Linnux -> Ubuntu(64 bit) ->use existing virtual hard disk file -> give path of ubuntu vm dk file -> create
 
 2. file -> prefrences -> network -> NatNetwork
-3. VM1 -> setting -> Network -> NatNetwork
-   VM2 -> setting -> Network -> NatNetwork
+3. VM1 -> setting -> NatNetwork -> Network
+   VM2 -> setting -> NatNetwork -> Network
 
 4. open both machines
 
