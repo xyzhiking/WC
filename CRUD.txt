@@ -5,8 +5,9 @@ vs code terminal:-
 
 npm init
 
-//open mongodb:-
-open its cmd
+//open mongodb:-\
+
+create connection (a) save and open its cmd :-
 
 show dbs
 use student
