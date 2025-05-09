@@ -22,7 +22,7 @@ click on find
 database will be shown
 
 //go on terminal vs code:-
-create a file in wad-crud folder mongodb.js
+create two file in wad-crud folder mongodb.js and index.js
 
 terminal:-
 npm i mongodb
